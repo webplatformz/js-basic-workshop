@@ -1,1 +1,1 @@
-# zuehlke-js-workshop
+# Zühlke JS Testing Workshop for SAM
