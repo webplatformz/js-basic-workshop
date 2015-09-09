@@ -16,5 +16,8 @@
   },
   "devDependencies": {
     "karma-chrome-launcher": "^0.2.0"
+  },
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp"
   }
 }
