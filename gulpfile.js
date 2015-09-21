@@ -8,9 +8,8 @@ gulp.task('connect', function() {
     });
 });
 
-
 gulp.task('js', function () {
-    gulp.src('exercises/**')
+    gulp.src('exercises/*.js')
         .pipe(connect.reload());
 });
 
@@ -26,7 +25,6 @@ gulp.task('open', function(){
     gulp.src(__filename)
         .pipe(open(options));
 });
-
 
 gulp.task('test', function (done) {
     new Server({
