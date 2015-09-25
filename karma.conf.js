@@ -4,9 +4,9 @@
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine-ajax', 'jasmine'],
     files: [
-      'exercises/*.js', 'tests/*.js'
+      'node_modules/jquery/dist/jquery.min.js', 'exercises/*.js', 'tests/*.js'
     ],
     exclude: [
         'exercises/debug.js'
