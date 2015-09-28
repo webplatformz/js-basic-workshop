@@ -12,5 +12,9 @@
   }
 
   window.fakeObjectCreate = function fakeObjectCreate(context) {
+    var fNOP = function() {};
+    fNOP.prototype = context;
+
+    return new fNOP();
   }
 })();

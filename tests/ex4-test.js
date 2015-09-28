@@ -52,5 +52,28 @@ describe("Exercise 4.1: Implement bind", function () {
 });
 
 describe("Exercise 4.2: Implement Object.create", function() {
+      var prototypeObject;
 
+      beforeEach(function() {
+        prototypeObject = {canary: "I AM A TEAPOT"};
+      });
+
+      it("returns a new object", function() {
+        var object = fakeObjectCreate({});
+
+        expect(object).toBeDefined();
+      });
+
+      it("adds the properties of the given context to the object", function() {
+        var object = fakeObjectCreate(prototypeObject);
+
+        expect(object.canary).toMatch(/I AM A TEAPOT/);
+      });
+
+      it("adds the properties as the property object", function() {
+        var object = fakeObjectCreate(prototypeObject);
+        object.canary = "I AM ANOTHER TEAPOT";
+
+        expect(prototypeObject.canary).toMatch(/I AM A TEAPOT/);
+      });
 });
