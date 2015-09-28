@@ -7,18 +7,28 @@
     "use strict";
 
     // TODO: Task 1 - Declare a variable named 'hello' with the string value 'world' into the global scope.
-    //                Note: Use the parameter 'global' of the surrounding IIFE to expose a variable into global scope
-
+    var hello = 'world';
 
     // TODO: Task 2 - Create a multiplier closure which holds a factor given as parameter
     //            Note: The closure returns an object which exposes two closure functions 'getFactor' and 'multiply'
     //            Note: 'getFactor' returns the given factor of the closure
     //            Note: 'multiply' takes a parameter and returns the product of the given parameter and the stored factor
-    var multiplierClosure = function () {
+    var multiplierClosure = function (factor) {
+        function getFactor() {
+            return factor;
+        }
 
+        function multiply(x) {
+            return factor * x;
+        }
+
+        return {
+            multiply: multiply,
+            getFactor: getFactor
+        }
     };
 
     global.ex3 = global.ex3 || {};
     global.ex3.multiplierClosure = global.ex3.multiplierClosure || multiplierClosure;
-
+    global.hello = global.hello || hello;
 }(window));
