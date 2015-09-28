@@ -9,7 +9,7 @@
     // TODO: Task 1 - Implement a max function, which accepts one ore more arguments
     function max() {
         var max = arguments[0];
-        for (var i = 1, l = arguments.length; i < l; i++) {
+        for (var i = 1; i < arguments.length; i++) {
             if (max < arguments[i]) {
                 max = arguments[i];
             }
