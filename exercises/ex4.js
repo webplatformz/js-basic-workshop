@@ -1,7 +1,15 @@
 "use strict";
 
-// new
-// this
-// prototype
+(function() {
+  // new
+  // this
+  // prototype
 
-// - andreas
+  // - andreas
+
+  window.fakeBind = function fakeBind(fToBind, context) {
+  }
+
+  window.fakeObjectCreate = function fakeObjectCreate(context) {
+  }
+})();
