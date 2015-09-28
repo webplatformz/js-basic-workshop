@@ -2,8 +2,14 @@
 
 describe('Exercise 1.1', function () {
 
+    var exercise11;
+
+    beforeEach(function () {
+        exercise11 = window.ex1.exercise11;
+    });
+
     it('should return an object', function () {
-        var object = exercise11();
+        var object = window.ex1.exercise11();
         expect(object).toBeDefined();
         expect(typeof object).toEqual('object');
     });
@@ -95,13 +101,14 @@ describe('Exercise 1.1', function () {
 });
 
 describe('Exercise 1.2', function () {
+
     it('should reverse the array, append its original length at the tail and then sort it', function () {
         var array = [7, 1, 3];
         spyOn(array, 'push').and.callThrough();
         spyOn(array, 'reverse').and.callThrough();
         spyOn(array, 'sort').and.callThrough();
 
-        exercise12(array);
+        window.ex1.exercise12(array);
 
         expect(array.reverse).toHaveBeenCalled();
         expect(array.push).toHaveBeenCalledWith(3);
@@ -113,11 +120,13 @@ describe('Exercise 1.2', function () {
         expect(array[2]).toEqual(3);
         expect(array[3]).toEqual(7);
     });
+
 });
 
 describe('Exercise 1.3', function () {
+
     it('should return a RegExp to match the string \'sam\'', function () {
-        var expression = exercise13();
+        var expression = window.ex1.exercise13();
         expect(isRegExp(expression)).toBeTruthy();
         expect(expression.test('sam')).toBeTruthy();
     });
@@ -125,23 +134,27 @@ describe('Exercise 1.3', function () {
     function isRegExp(value) {
         return typeof value === 'object' && value instanceof RegExp;
     }
+
 });
 
 describe('Exercise 1.4', function () {
+
+    function isString(value) {
+        return typeof value === 'string';
+    }
+
     it('should throw an exception with name and message', function () {
         var exception;
         try {
-            exercise14();
+            window.ex1.exercise14();
         } catch (e) {
             exception = e;
         }
         expect(exception).toBeDefined();
         expect(exception.name).toBeDefined();
         expect(exception.message).toBeDefined();
-        expect(isString(exception.name)).toBeTruthy();        
+        expect(isString(exception.name)).toBeTruthy();
         expect(isString(exception.message)).toBeTruthy();
     });
-    function isString(value) {
-        return typeof value === 'string';
-    }
+
 });
