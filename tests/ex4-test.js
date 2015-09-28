@@ -1,6 +1,48 @@
 "use strict";
 
-describe("Exercise 4.1: Implement bind", function () {
+describe("Exercise 4.1: Bind", function () {
+    var bindFunction = function() {
+      return this.data;
+    }
+
+  it("calls a function with bind", function () {
+    var result = window.bindIt(bindFunction, {data: "I AM ANOTHER TEAPOT"});
+
+    expect(result()).toMatch(/I AM ANOTHER TEAPOT/);
+  });
+
+  it("binds the function to the context", function() {
+      var result = window.bindIt(bindFunction, {data: "I AM ANOTHER TEAPOT"});
+
+      expect(result.apply({data: "I AM THE THIRD TEAPOT"})).toMatch(/I AM ANOTHER TEAPOT/);
+  });
+});
+
+describe("Exercise 4.2: Constructors", function() {
+  it("creates a constructor that has a name property", function() {
+    var Constructor = window.createIt();
+    var result = new Constructor("THE TEAPOT");
+
+    expect(result).toBeDefined();
+  });
+
+  it("creates a constructor with a name property", function() {
+    var Constructor = window.createIt();
+    var result = new Constructor("THE TEAPOT");
+
+    expect(result.name).toMatch(/THE TEAPOT/);
+  });
+
+  it("sets the prototype to the given object", function() {
+    var Constructor = window.createIt({ getFancyName: function() {
+      return "The Great " + this.name;
+    }});
+    var result = new Constructor("Teapot");
+    expect(result.getFancyName()).toMatch(/The Great Teapot/);
+  })
+})
+
+describe("Optional Exercise 4.3: Implement bind", function () {
 
   var callback41, context;
 
@@ -51,7 +93,7 @@ describe("Exercise 4.1: Implement bind", function () {
     });
 });
 
-describe("Exercise 4.2: Implement Object.create", function() {
+describe("Optional Exercise 4.4: Implement Object.create", function() {
       var prototypeObject;
 
       beforeEach(function() {

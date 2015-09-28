@@ -7,6 +7,12 @@
 
   // - andreas
 
+  window.bindIt = function(fToBind, context) {
+  }
+
+  window.createIt = function(prototype) {
+  }
+
   window.fakeBind = function fakeBind(fToBind, context) {
   }
 

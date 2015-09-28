@@ -1,6 +1,19 @@
 "use strict";
 
 (function() {
+  window.bindIt = function(fToBind, context) {
+    return fToBind.bind(context);
+  }
+
+  window.createIt = function(prototype) {
+    var Constructor = function Constructor(name) {
+      this.name = name;
+    }
+    Constructor.prototype = prototype;
+
+    return Constructor;
+  }
+  
   window.fakeBind = function fakeBind(fToBind, context) {
     var fBound = function() {
       fToBind.call(context);
