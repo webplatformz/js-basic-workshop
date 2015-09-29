@@ -8,7 +8,7 @@
 // The service is available via GET under /rest/calculate/A/plus/B where A and B are integers.
 // e.g. GET /rest/calculate/5/plus/5 => 10
 
-(function (window) {
+(function (window, $, Q) {
     "use strict";
 
     // TODO Exercise 5.1
@@ -64,4 +64,4 @@
     window.ex5.exercise51 = window.ex5.exercise51 || exercise51;
     window.ex5.exercise52 = window.ex5.exercise52 || serverAddPromise;
     window.ex5.exercise53 = window.ex5.exercise53 || exercise53;
-})(window);
+})(window, jQuery, Q);
