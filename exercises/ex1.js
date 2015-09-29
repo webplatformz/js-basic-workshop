@@ -15,7 +15,7 @@
     //                     - another object
     //                     - a function
     function exercise11() {
-
+        // YOUR CODE GOES HERE
     }
 
     // TODO Exercise 1.2 - Use the standard array methods to:
@@ -24,17 +24,17 @@
     //                     - append the original array length as element at the end
     //                     - then sort the array
     function exercise12(array) {
-
+        // YOUR CODE GOES HERE
     }
 
     // TODO Exercise 1.3 - Return a RegExp which matches the string 'sam'
     function exercise13() {
-
+        // YOUR CODE GOES HERE
     }
 
     // TODO Exercise 1.4 - Throw an exception object with a name and message property
     function exercise14() {
-
+        // YOUR CODE GOES HERE
     }
 
     global.ex1 = global.ex1 || {};
