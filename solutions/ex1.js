@@ -27,7 +27,6 @@
     }
 
     // TODO Exercise 1.2 - Use the standard array methods to:
-    //                     - use the standard array methods to:
     //                     - reverse the array
     //                     - append the original array length as element at the end
     //                     - then sort the array

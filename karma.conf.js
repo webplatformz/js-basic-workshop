@@ -9,7 +9,7 @@ module.exports = function(config) {
       'node_modules/jquery/dist/jquery.min.js',
       'node_modules/q/q.js',
       'exercises/*.js',
-      'tests/*.js'
+      'tests/**/*.js'
     ],
     exclude: [
         'exercises/debug.js'
