@@ -125,45 +125,46 @@ describe('Exercise 1.2', function () {
 
 describe('Exercise 1.3', function () {
 
+    it('should return date: 29th February 2000', function () {
+        var date = window.ex1.exercise13();
+        expect(date).toEqual(new Date(2000, 1, 29));
+    });
+
+});
+
+describe('Exercise 1.4', function () {
+
     it('should return true when given NaN', function () {
-        var boolean = window.ex1.exercise13(NaN);
+        var boolean = window.ex1.exercise14(NaN);
         expect(boolean === true).toBeTruthy();
     });
 
     it('should return false when given undefined', function () {
-        var boolean = window.ex1.exercise13(undefined);
+        var boolean = window.ex1.exercise14(undefined);
         expect(boolean === false).toBeTruthy();
     });
 
     it('should return true when given a boolean', function () {
-        var boolean1 = window.ex1.exercise13(true);
-        var boolean2 = window.ex1.exercise13(false);
+        var boolean1 = window.ex1.exercise14(true);
+        var boolean2 = window.ex1.exercise14(false);
         expect(boolean1 === true).toBeTruthy();
         expect(boolean2 === true).toBeTruthy();
     });
 
     it('should return true when given the number 42', function () {
-        var boolean = window.ex1.exercise13(42);
+        var boolean = window.ex1.exercise14(42);
         expect(boolean === true).toBeTruthy();
     });
 
     it('should return false when given the string "42"', function () {
-        var boolean = window.ex1.exercise13('42');
+        var boolean = window.ex1.exercise14('42');
         expect(boolean === false).toBeTruthy();
     });
 
     it('should return false when given an object, an array, a different number than 42 or null', function () {
-        expect(window.ex1.exercise13({}) === false).toBeTruthy();
-        expect(window.ex1.exercise13([]) === false).toBeTruthy();
-        expect(window.ex1.exercise13(41) === false).toBeTruthy();
-        expect(window.ex1.exercise13(null) === false).toBeTruthy();
-    });
-});
-
-describe('Exercise 1.4', function () {
-
-    it('should return date: 29th February 2000', function () {
-        var date = window.ex1.exercise14();
-        expect(date).toEqual(new Date(2000, 1, 29));
+        expect(window.ex1.exercise14({}) === false).toBeTruthy();
+        expect(window.ex1.exercise14([]) === false).toBeTruthy();
+        expect(window.ex1.exercise14(41) === false).toBeTruthy();
+        expect(window.ex1.exercise14(null) === false).toBeTruthy();
     });
 });

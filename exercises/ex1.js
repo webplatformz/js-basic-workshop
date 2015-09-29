@@ -27,16 +27,16 @@
         // YOUR CODE GOES HERE
     }
 
-    // TODO Exercise 1.3 - Return true when:
-    //                     - the given value is NaN but not undefined
-    //                     - OR the given value is a Boolean
-    //                     - OR the given value equals 42
-    function exercise13(value) {
+    // TODO Exercise 1.3 - Return a Date object which represents the 29th February 2000
+    function exercise13() {
         // YOUR CODE GOES HERE
     }
 
-    // TODO Exercise 1.4 - Return a Date object which represents the 29th February 2000
-    function exercise14() {
+    // TODO Exercise 1.4 - Return true when:
+    //                     - the given value is NaN but not undefined
+    //                     - OR the given value is a Boolean
+    //                     - OR the given value equals 42
+    function exercise14(value) {
         // YOUR CODE GOES HERE
     }
 
