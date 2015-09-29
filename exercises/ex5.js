@@ -43,7 +43,7 @@
 
     }
 
-    // TODO Exercise 5.3
+    // TODO Exercise 5.3 (optional)
     // Congrats, your promise seems promising. Now it is time to use it.
 
     // TODO 5.3.1 Use the serverAddPromise function to calculate 5 + 4 + 3 + 2 + 1.
@@ -54,7 +54,7 @@
     }
 
 
-    // TODO Exercise 5.4 -> ADDITIONAL EXERCISE
+    // TODO Exercise 5.4 (optional)
 
     // code exercise 5.2 once again, this time using the basic XMLHttpRequest() object of javascript instead of
     // the jquery abstraction. See https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest for more information
