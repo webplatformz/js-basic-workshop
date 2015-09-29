@@ -1,6 +1,6 @@
-"use strict";
-
 (function (window) {
+    "use strict";
+
     function exercise51(callback) {
         $.get("/rest/calculate/5/plus/4", function (result) {
             $.get("/rest/calculate/" + result + "/plus/3", function (result) {

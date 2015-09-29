@@ -1,11 +1,11 @@
-"use strict";
-
 // Welcome Coder! You are doing very well so far!
 // There is a very very advanced rest service you should use for the next exercises:
 // The service is available via GET under /rest/calculate/A/plus/B where A and B are integers.
 // e.g. GET /rest/calculate/5/plus/5 => 10
 
 (function (window) {
+    "use strict";
+
     // Exercise 5.1
     function exercise51(callback) {
         // You got the task to calculate the amount of connections between all teammembers of the yankee team. For
@@ -36,8 +36,8 @@
     //             promise resolve
     // TODO 5.2.4: Let the promise fail, if there is no correct answer from the server
 
-    // YOUR CODE GOES HERE
-
+    // YOUR CODE GOES HERE:
+    function serverAddPromise() {}
 
 
 
@@ -47,9 +47,9 @@
     // TODO 5.3.1 Use the serverAddPromise function to calculate 5 + 4 + 3 + 2 + 1.
     //            Do not use Q.all, instead calculate the value in such steps: 5+4, (5+4)+3, ...
 
-    // YOUR CODE GOES HERE
-
-
+    function exercise53() {
+        // YOUR CODE GOES HERE
+    }
 
 
     // exercise 5.4 -> ADDITIONAL EXERCISE
