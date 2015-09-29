@@ -1,3 +1,8 @@
+/**
+ * JavaScript Basics Workshop - Exercise 5
+ * Callbacks, Ajax & Promises
+ */
+
 // Welcome Coder! You are doing very well so far!
 // There is a very very advanced rest service you should use for the next exercises:
 // The service is available via GET under /rest/calculate/A/plus/B where A and B are integers.
@@ -6,13 +11,12 @@
 (function (window) {
     "use strict";
 
-    // Exercise 5.1
+    // TODO Exercise 5.1
+    // You got the task to calculate the amount of connections between all teammembers of the yankee team. For
+    // these six people, the number is calculated like this: 5 + 4 + 3 + 2 + 1. <justkidding>As this calculation
+    // needs lot of resources on the client side</justkidding>, the calculation has to be done on the server with
+    // the high performance webservice mentioned above.
     function exercise51(callback) {
-        // You got the task to calculate the amount of connections between all teammembers of the yankee team. For
-        // these six people, the number is calculated like this: 5 + 4 + 3 + 2 + 1. <justkidding>As this calculation
-        // needs lot of resources on the client side</justkidding>, the calculation has to be done on the server with
-        // the high performance webservice mentioned above.
-
         // TODO 5.1.1 - Use the api to calculate the result
         //              NOTE Use jQuery to call the service and get the result of 5+4, then take the result
         //                   (in the first case 9) and add 3, and so on ...
@@ -22,9 +26,7 @@
         // YOUR CODE GOES HERE
     }
 
-
-    // exercise 5.2
-
+    // TODO Exercise 5.2
     // What a callback hell. We should improve this code. Use the "q" library which is already included
     // and loaded to create your first promise!
 
@@ -37,11 +39,11 @@
     // TODO 5.2.4: Let the promise fail, if there is no correct answer from the server
 
     // YOUR CODE GOES HERE:
-    function serverAddPromise() {}
+    function serverAddPromise() {
 
+    }
 
-
-    // exercise 5.3
+    // TODO Exercise 5.3
     // Congrats, your promise seems promising. Now it is time to use it.
 
     // TODO 5.3.1 Use the serverAddPromise function to calculate 5 + 4 + 3 + 2 + 1.
@@ -52,13 +54,14 @@
     }
 
 
-    // exercise 5.4 -> ADDITIONAL EXERCISE
+    // TODO Exercise 5.4 -> ADDITIONAL EXERCISE
 
     // code exercise 5.2 once again, this time using the basic XMLHttpRequest() object of javascript instead of
     // the jquery abstraction. See https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest for more information
 
 
-    window.exercise51 = exercise51;
-    window.exercise52 = serverAddPromise;
-    window.exercise53 = exercise53;
+    window.ex5 = window.ex5 || {};
+    window.ex5.exercise51 = window.ex5.exercise51 || exercise51;
+    window.ex5.exercise52 = window.ex5.exercise52 || serverAddPromise;
+    window.ex5.exercise53 = window.ex5.exercise53 || exercise53;
 })(window);

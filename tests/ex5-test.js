@@ -41,7 +41,7 @@
 
         describe("CALLBACKS / AJAX: Exercise 5.1", function () {
             it("should make the correct rest calls", function (done) {
-                exercise51(function () {
+                window.ex5.exercise51(function () {
                     var calledUrls = getCalledUrls();
 
                     expect(calledUrls).toContain("/rest/calculate/5/plus/4");
@@ -54,7 +54,7 @@
             });
 
             it("should return the correct result", function (done) {
-                exercise51(function (result) {
+                window.ex5.exercise51(function (result) {
                     expect(result).toBeDefined();
                     expect(result).toMatch(/15/);
 
@@ -76,11 +76,11 @@
             });
 
             it("the function serverAddPromise should be defined (5.2.1)", function () {
-                expect(window.exercise52).toBeDefined();
+                expect(window.ex5.exercise52).toBeDefined();
             });
 
             it("the serverAddPromise function should return a callback (5.2.2)", function () {
-                var promise = window.exercise52();
+                var promise = window.ex5.exercise52();
 
                 expect(promise.then).toBeDefined();
                 expect(promise.fail).toBeDefined();
@@ -89,7 +89,7 @@
             it("the serverAddPromise function should add 5 + 5 and resolve the promise (5.2.3)", function (done) {
                 stubCalculationRequest(5, 5);
 
-                var promise = window.exercise52(5, 5);
+                var promise = window.ex5.exercise52(5, 5);
 
                 promise.then(function (result) {
                     expect(result).toMatch(/10/);
@@ -107,7 +107,7 @@
                         responseText: 'oh boy i have no idea how to add 5 and zero'
                     });
 
-                var promise = window.exercise52(5, 0);
+                var promise = window.ex5.exercise52(5, 0);
 
                 promise.fail(function () {
                     done();
@@ -123,7 +123,7 @@
             Q.fcall(function () {
                 return 10;
             }).then(function (value) {
-                console.log("then")
+                console.log("then");
                 throw new Error("bla");
             }).fail(function () {
                 console.log("fail");
