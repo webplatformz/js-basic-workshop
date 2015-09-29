@@ -61,7 +61,7 @@ describe("Optional Exercise 4.3: Implement bind", function () {
 
     it("calls the given function", function() {
       var testData = new UnboundObject();
-      var boundFunction = fakeBind(testData.myFunction, context);
+      var boundFunction = window.myBind(testData.myFunction, context);
       boundFunction();
 
       expect(callback41).toHaveBeenCalled();
@@ -69,7 +69,7 @@ describe("Optional Exercise 4.3: Implement bind", function () {
 
     it("calls the function with the given environment", function() {
       var testData = new UnboundObject();
-      var boundFunction = fakeBind(testData.myFunction, context);
+      var boundFunction = window.myBind(testData.myFunction, context);
       boundFunction();
 
       expect(callback41).toHaveBeenCalledWith(context);
@@ -77,7 +77,7 @@ describe("Optional Exercise 4.3: Implement bind", function () {
 
     it("cannot overwrite the environment with call", function() {
       var testData = new UnboundObject();
-      var boundFunction = fakeBind(testData.myFunction, context);
+      var boundFunction = window.myBind(testData.myFunction, context);
       boundFunction.call({data: "OTHER TEAPOTS"});
 
       expect(callback41).toHaveBeenCalledWith(context);
@@ -85,7 +85,7 @@ describe("Optional Exercise 4.3: Implement bind", function () {
 
     it("passes on the prototype", function() {
       var testData = new UnboundObject();
-      var boundFunction = fakeBind(testData.myFunction, context);
+      var boundFunction = window.myBind(testData.myFunction, context);
       console.log("proto is", boundFunction.prototype);
       boundFunction.call({data: "OTHER TEAPOTS"});
 
@@ -101,19 +101,19 @@ describe("Optional Exercise 4.4: Implement Object.create", function() {
       });
 
       it("returns a new object", function() {
-        var object = fakeObjectCreate({});
+        var object = window.myObjectCreate({});
 
         expect(object).toBeDefined();
       });
 
       it("adds the properties of the given context to the object", function() {
-        var object = fakeObjectCreate(prototypeObject);
+        var object = window.myObjectCreate(prototypeObject);
 
         expect(object.canary).toMatch(/I AM A TEAPOT/);
       });
 
       it("adds the properties as the property object", function() {
-        var object = fakeObjectCreate(prototypeObject);
+        var object = window.myObjectCreate(prototypeObject);
         object.canary = "I AM ANOTHER TEAPOT";
 
         expect(prototypeObject.canary).toMatch(/I AM A TEAPOT/);
