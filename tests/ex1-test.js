@@ -125,8 +125,45 @@ describe('Exercise 1.2', function () {
 
 describe('Exercise 1.3', function () {
 
+    it('should return true when given NaN', function () {
+        var boolean = window.ex1.exercise13(NaN);
+        expect(boolean === true).toBeTruthy();
+    });
+
+    it('should return false when given undefined', function () {
+        var boolean = window.ex1.exercise13(undefined);
+        expect(boolean === false).toBeTruthy();
+    });
+
+    it('should return true when given a boolean', function () {
+        var boolean1 = window.ex1.exercise13(true);
+        var boolean2 = window.ex1.exercise13(false);
+        expect(boolean1 === true).toBeTruthy();
+        expect(boolean2 === true).toBeTruthy();
+    });
+
+    it('should return true when given the number 42', function () {
+        var boolean = window.ex1.exercise13(42);
+        expect(boolean === true).toBeTruthy();
+    });
+
+    it('should return false when given the string "42"', function () {
+        var boolean = window.ex1.exercise13('42');
+        expect(boolean === false).toBeTruthy();
+    });
+
+    it('should return false when given an object, an array, a different number than 42 or null', function () {
+        //expect(window.ex1.exercise13({}) === false).toBeTruthy();
+        expect(window.ex1.exercise13([]) === false).toBeTruthy();
+        expect(window.ex1.exercise13(41) === false).toBeTruthy();
+        expect(window.ex1.exercise13(null) === false).toBeTruthy();
+    });
+});
+
+describe('Exercise 1.4', function () {
+
     it('should return a RegExp to match the string \'sam\'', function () {
-        var expression = window.ex1.exercise13();
+        var expression = window.ex1.exercise14();
         expect(isRegExp(expression)).toBeTruthy();
         expect(expression.test('sam')).toBeTruthy();
     });
@@ -137,7 +174,7 @@ describe('Exercise 1.3', function () {
 
 });
 
-describe('Exercise 1.4', function () {
+describe('Exercise 1.5', function () {
 
     function isString(value) {
         return typeof value === 'string';
@@ -146,7 +183,7 @@ describe('Exercise 1.4', function () {
     it('should throw an exception with name and message', function () {
         var exception;
         try {
-            window.ex1.exercise14();
+            window.ex1.exercise15();
         } catch (e) {
             exception = e;
         }
@@ -157,4 +194,12 @@ describe('Exercise 1.4', function () {
         expect(isString(exception.message)).toBeTruthy();
     });
 
+});
+
+describe('Exercise 1.6', function () {
+
+    it('should return date: 29th February 2000', function () {
+        var date = window.ex1.exercise16();
+        expect(date).toEqual(new Date(2000, 1, 29));
+    });
 });
