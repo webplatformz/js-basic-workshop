@@ -6,10 +6,10 @@
 (function (global) {
     "use strict";
 
-    // TODO: Exercise 1 - Declare a variable named 'hello' with the string value 'world' into the global scope.
+    // TODO: Exercise 3.1 - Declare a variable named 'hello' with the string value 'world' into the global scope.
     var hello = 'world';
 
-    // TODO: Exercise 2 - Create a multiplier closure which holds a factor given as parameter
+    // TODO: Exercise 3.2 - Create a multiplier closure which holds a factor given as parameter
     //            Note: The closure returns an object which exposes two closure functions 'getFactor' and 'multiply'
     //            Note: 'getFactor' returns the given factor of the closure
     //            Note: 'multiply' takes a parameter and returns the product of the given parameter and the stored factor
