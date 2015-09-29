@@ -2,71 +2,131 @@
 
 var callback51;
 
-describe("Exercise 5.1", function () {
-    beforeEach(function () {
-        jasmine.Ajax.install();
+describe("CALLBACKS / AJAX", function () {
+    function stubCalculationRequest(a, b) {
+        var url = '/rest/calculate/' + a + '/plus/' + b;
+        var result = (a + b);
 
         jasmine.Ajax.stubRequest(
-            /.*/
+            url
         ).andReturn({
                 status: 200,
                 statusText: 'HTTP/1.1 200 OK',
                 contentType: 'text/plain',
-                responseText: 'all good'
+                responseText: "" + result
             });
+    }
+
+    beforeEach(function () {
+        jasmine.Ajax.install();
+
+        stubCalculationRequest(5, 4);
+        stubCalculationRequest(9, 3);
+        stubCalculationRequest(12, 2);
+        stubCalculationRequest(14, 1);
     });
 
     afterEach(function () {
         jasmine.Ajax.uninstall();
     });
 
-    it("should call a rest resource", function () {
-        exercise51();
 
-        var request = jasmine.Ajax.requests.mostRecent();
-        expect(request).toBeDefined();
-        expect(request.url).toBe('/rest/exercise51');
+    function verifyAjaxRequest(a, b) {
+        for (var i = 0; i < jasmine.Ajax.requests.count(); i++) {
+            var request = jasmine.Ajax.requests.at(i);
+
+            if (request.url == "/rest/calculate/" + a + "/plus/" + b) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function getCalledUrls() {
+        var calledUrls = [];
+
+        for (var i = 0; i < jasmine.Ajax.requests.count(); i++) {
+            calledUrls.push(jasmine.Ajax.requests.at(i).url);
+        }
+
+        return calledUrls;
+    }
+
+    describe("CALLBACKS / AJAX: Exercise 5.1", function () {
+        it("should make the correct rest calls", function (done) {
+            exercise51(function () {
+                var calledUrls = getCalledUrls();
+
+                expect(calledUrls).toContain("/rest/calculate/5/plus/4");
+                expect(calledUrls).toContain("/rest/calculate/9/plus/3");
+                expect(calledUrls).toContain("/rest/calculate/12/plus/2");
+                expect(calledUrls).toContain("/rest/calculate/14/plus/1");
+
+                done();
+            });
+        });
+
+        it("should return the correct result", function (done) {
+            exercise51(function (result) {
+                expect(result).toBeDefined();
+                expect(result).toMatch(/15/);
+
+                done();
+            });
+        });
     });
 
-    it("should call the predefined callback function", function (done) {
-        callback51 = jasmine.createSpy('callback51');
+    describe("PROMISES: Exercise 5.2", function () {
+        beforeEach(function () {
+            jasmine.Ajax.stubRequest(
+                '/rest/calculate/undefined/plus/undefined'
+            ).andReturn({
+                    status: 200,
+                    statusText: 'HTTP/1.1 200 OK',
+                    contentType: 'text/plain',
+                    responseText: 'all good'
+                });
+        });
 
-        exercise51();
+        it("the function serverAddPromise should be defined (5.2.1)", function () {
+            expect(window.exercise52).toBeDefined();
+        });
 
-        setTimeout(function() {
-            expect(callback51).toHaveBeenCalled();
-            done();
-        }, 1000);
-    });
-});
+        it("the serverAddPromise function should return a callback (5.2.2)", function () {
+            var promise = window.exercise52();
 
+            expect(promise.then).toBeDefined();
+            expect(promise.fail).toBeDefined();
+        });
 
-describe("Exercise 5.2", function () {
-    it("should define a function exercise 51", function () {
-        expect(exercise52).toBeDefined();
-    });
+        it("the serverAddPromise function should add 5 + 5 and resolve the promise (5.2.3)", function (done) {
+            stubCalculationRequest(5, 5);
 
-    it("should print out something an empty string", function() {
-        spyOn(console, 'log').and.callThrough();
+            var promise = window.exercise52(5, 5);
 
-        exercise52([]);
+            promise.then(function (result) {
+                expect(result).toMatch(/10/);
+                done();
+            });
+        });
 
-        expect(console.log).toHaveBeenCalledWith('');
-    });
+        it("the serverAddPromise function can not add 5 + 0 and the promise should then be rejected (5.2.4)", function (done) {
+            jasmine.Ajax.stubRequest(
+                '/rest/calculate/5/plus/0'
+            ).andReturn({
+                    status: 500,
+                    statusText: 'HTTP/1.1 200 OK',
+                    contentType: 'text/plain',
+                    responseText: 'oh boy i have no idea how to add 5 and zero'
+                });
 
-    it("should print out the concatenanted string", function() {
-        spyOn(console, 'log').and.callThrough();
+            var promise = window.exercise52(5, 0);
 
-        exercise52(['bla','bla']);
+            promise.fail(function () {
+                done();
+            });
+        });
 
-        expect(console.log).toHaveBeenCalledWith('bla,bla');
-    });
-
-    it("should print nothing if there is something else than an array", function() {
-        spyOn(console, 'log').and.callThrough();
-
-        exercise52('bla');
-
-        expect(console.log).not.toHaveBeenCalled();
     });
 });
