@@ -1,4 +1,4 @@
-(function (jasmine) {
+(function (global, jasmine) {
     "use strict";
 
     describe("Exercise 4: Callbacks, Ajax & Promises", function () {
@@ -18,6 +18,8 @@
         }
 
         beforeEach(function () {
+            // reduce timeout to make test suite faster
+            jasmine.DEFAULT_TIMEOUT_INTERVAL = 500; //ms
             jasmine.Ajax.install();
 
             stubCalculationRequest(5, 4);
@@ -30,20 +32,20 @@
             jasmine.Ajax.uninstall();
         });
 
-        function getCalledUrls() {
-            var calledUrls = [];
-
-            for (var i = 0; i < jasmine.Ajax.requests.count(); i++) {
-                calledUrls.push(jasmine.Ajax.requests.at(i).url);
-            }
-
-            return calledUrls;
-        }
-
         describe("Exercise 4.1: Callbacks / Ajax", function () {
 
+            function getCalledUrls() {
+                var calledUrls = [];
+
+                for (var i = 0; i < jasmine.Ajax.requests.count(); i++) {
+                    calledUrls.push(jasmine.Ajax.requests.at(i).url);
+                }
+
+                return calledUrls;
+            }
+
             it("should make the correct rest calls", function (done) {
-                window.ex5.exercise51(function () {
+                global.ex4.exercise41(function () {
                     var calledUrls = getCalledUrls();
 
                     expect(calledUrls).toContain("/rest/calculate/5/plus/4");
@@ -56,7 +58,7 @@
             });
 
             it("should return the correct result", function (done) {
-                window.ex5.exercise51(function (result) {
+                global.ex4.exercise41(function (result) {
                     expect(result).toBeDefined();
                     expect(result).toMatch(/15/);
 
@@ -79,21 +81,17 @@
                     });
             });
 
-            it("the function serverAddPromise should be defined (5.2.1)", function () {
-                expect(window.ex5.exercise52).toBeDefined();
-            });
-
-            it("the serverAddPromise function should return a callback (5.2.2)", function () {
-                var promise = window.ex5.exercise52();
+            it("the serverAddPromise function should return a callback", function () {
+                var promise = global.ex4.exercise42();
 
                 expect(promise.then).toBeDefined();
                 expect(promise.fail).toBeDefined();
             });
 
-            it("the serverAddPromise function should add 5 + 5 and resolve the promise (5.2.3)", function (done) {
+            it("the serverAddPromise function should add 5 + 5 and resolve the promise", function (done) {
                 stubCalculationRequest(5, 5);
 
-                var promise = window.ex5.exercise52(5, 5);
+                var promise = global.ex4.exercise42(5, 5);
 
                 promise.then(function (result) {
                     expect(result).toMatch(/10/);
@@ -101,7 +99,7 @@
                 });
             });
 
-            it("the serverAddPromise function can not add 5 + 0 and the promise should then be rejected (5.2.4)", function (done) {
+            it("the serverAddPromise function can not add 5 + 0 and the promise should then be rejected", function (done) {
                 jasmine.Ajax.stubRequest(
                     '/rest/calculate/5/plus/0'
                 ).andReturn({
@@ -111,7 +109,7 @@
                         responseText: 'oh boy i have no idea how to add 5 and zero'
                     });
 
-                var promise = window.ex5.exercise52(5, 0);
+                var promise = window.ex4.exercise42(5, 0);
 
                 promise.fail(function () {
                     done();
@@ -122,4 +120,4 @@
 
     });
 
-})(window.jasmine);
+})(window, window.jasmine);
