@@ -26,29 +26,11 @@ describe('Exercise 1.1', function () {
         expect(string.length).toBeGreaterThan(0);
     });
 
-    it('should return an object with a boolean property', function () {
-        var boolean = getFirstPropertyWhichMeetsCondition(exercise11(), isBoolean);
-
-        expect(boolean).toBeDefined();
-        expect(boolean === true || boolean === false).toBeTruthy();
-    });
-
     it('should return an object with an non-empty array property', function () {
         var array = getFirstPropertyWhichMeetsCondition(exercise11(), isArray);
 
         expect(array).toBeDefined();
         expect(array.length).toBeGreaterThan(0);
-    });
-
-    it('should return an object with another object property', function () {
-        var object = getFirstPropertyWhichMeetsCondition(exercise11(), isObjectAndNotArray);
-
-        expect(object).toBeDefined();
-    });
-
-    it('should return an object with a function property', function () {
-        var func = getFirstPropertyWhichMeetsCondition(exercise11(), isFunction);
-        expect(func).toBeDefined();
     });
 
     function getFirstPropertyWhichMeetsCondition(object, condition) {
@@ -80,23 +62,11 @@ describe('Exercise 1.1', function () {
         return typeof value === 'string';
     }
 
-    function isBoolean(value) {
-        return typeof value === 'boolean';
-    }
-
     function isArray(value) {
         if (typeof value !== 'object') {
             return false;
         }
         return Object.prototype.toString.apply(value) === '[object Array]';
-    }
-
-    function isObjectAndNotArray(value) {
-        return typeof value === 'object' && !isArray(value);
-    }
-
-    function isFunction(value) {
-        return typeof value === 'function';
     }
 });
 
@@ -106,19 +76,17 @@ describe('Exercise 1.2', function () {
         var array = [7, 1, 3];
         spyOn(array, 'push').and.callThrough();
         spyOn(array, 'reverse').and.callThrough();
-        spyOn(array, 'sort').and.callThrough();
 
         window.ex1.exercise12(array);
 
         expect(array.reverse).toHaveBeenCalled();
         expect(array.push).toHaveBeenCalledWith(3);
-        expect(array.sort).toHaveBeenCalled();
 
         expect(array.length).toEqual(4);
-        expect(array[0]).toEqual(1);
-        expect(array[1]).toEqual(3);
-        expect(array[2]).toEqual(3);
-        expect(array[3]).toEqual(7);
+        expect(array[0]).toEqual(3);
+        expect(array[1]).toEqual(1);
+        expect(array[2]).toEqual(7);
+        expect(array[3]).toEqual(3);
     });
 
 });
@@ -139,11 +107,6 @@ describe('Exercise 1.4', function () {
         expect(boolean === true).toBeTruthy();
     });
 
-    it('should return false when given undefined', function () {
-        var boolean = window.ex1.exercise14(undefined);
-        expect(boolean === false).toBeTruthy();
-    });
-
     it('should return true when given a boolean', function () {
         var boolean1 = window.ex1.exercise14(true);
         var boolean2 = window.ex1.exercise14(false);
@@ -159,12 +122,5 @@ describe('Exercise 1.4', function () {
     it('should return false when given the string "42"', function () {
         var boolean = window.ex1.exercise14('42');
         expect(boolean === false).toBeTruthy();
-    });
-
-    it('should return false when given an object, an array, a different number than 42 or null', function () {
-        expect(window.ex1.exercise14({}) === false).toBeTruthy();
-        expect(window.ex1.exercise14([]) === false).toBeTruthy();
-        expect(window.ex1.exercise14(41) === false).toBeTruthy();
-        expect(window.ex1.exercise14(null) === false).toBeTruthy();
     });
 });

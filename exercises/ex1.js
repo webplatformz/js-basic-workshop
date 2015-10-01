@@ -10,19 +10,14 @@
     // TODO Exercise 1.1 - Return an object containing the following properties:
     //                     - a valid, finite number
     //                     - a non-empty string
-    //                     - a boolean property
     //                     - a non-empty array
-    //                     - another object
-    //                     - a function
     function exercise11() {
         // YOUR CODE GOES HERE
     }
 
     // TODO Exercise 1.2 - Use the standard array methods to:
-    //                     - use the standard array methods to:
     //                     - reverse the array
     //                     - append the original array length as element at the end
-    //                     - then sort the array
     function exercise12(array) {
         // YOUR CODE GOES HERE
     }
@@ -32,7 +27,7 @@
         // YOUR CODE GOES HERE
     }
 
-    // TODO Exercise 1.4 - Return true when:
+    // TODO Exercise 1.4 - Return true if:
     //                     - the given value is NaN but not undefined
     //                     - OR the given value is a Boolean
     //                     - OR the given value equals 42
