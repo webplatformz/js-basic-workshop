@@ -7,9 +7,10 @@
     "use strict";
 
     // TODO: Exercise 2.1 - Implement a max function, which accepts one ore more arguments
+    //                      Note: Using the Math.max function is not allowed!
     function max() {
-        var max = arguments[0];
-        for (var i = 1; i < arguments.length; i++) {
+        var max = -Infinity;
+        for (var i = 0; i < arguments.length; i++) {
             if (max < arguments[i]) {
                 max = arguments[i];
             }

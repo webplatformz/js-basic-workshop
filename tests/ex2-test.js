@@ -7,15 +7,7 @@ describe('Exercise 2.1: Implement the max function', function () {
     beforeEach(function () {
         maxFunc = window.ex2.max;
     });
-
-    it('should be defined', function () {
-        expect(maxFunc).toBeDefined();
-    });
-
-    it('should return undefined if no argument given', function () {
-        expect(maxFunc()).toBeUndefined();
-    });
-
+    
     it('should return max given single argument', function () {
         expect(maxFunc(2)).toBe(2);
     });
@@ -28,6 +20,12 @@ describe('Exercise 2.1: Implement the max function', function () {
         expect(maxFunc(-3, 2, 5)).toBe(5);
     });
 
+    it('should not use Math.max. We told you!', function () {
+        Math.max = jasmine.createSpy('max');
+        maxFunc(5);
+        expect(Math.max).not.toHaveBeenCalled();
+    });
+
 });
 
 describe('Exercise 2.2: Implement the print function', function () {
@@ -36,10 +34,6 @@ describe('Exercise 2.2: Implement the print function', function () {
 
     beforeEach(function () {
         printFunc = window.ex2.print;
-    });
-
-    it('should be defined', function () {
-        expect(printFunc).toBeDefined();
     });
 
     it('should throw an exception if no function parameter is given', function () {

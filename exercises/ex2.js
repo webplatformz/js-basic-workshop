@@ -7,6 +7,7 @@
     "use strict";
 
     // TODO: Exercise 2.1 - Implement a max function, which accepts one ore more arguments
+    //                      Note: Using the Math.max function is not allowed!
     function max() {
         // YOUR CODE GOES HERE
     }
