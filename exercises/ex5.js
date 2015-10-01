@@ -11,7 +11,7 @@
 (function (window, $, Q) {
     "use strict";
 
-    // TODO Exercise 5.1
+    // Exercise 5.1
     // You got the task to calculate the amount of connections between all teammembers of the yankee team. For
     // these six people, the number is calculated like this: 5 + 4 + 3 + 2 + 1. <justkidding>As this calculation
     // needs lot of resources on the client side</justkidding>, the calculation has to be done on the server with
@@ -26,7 +26,7 @@
         // YOUR CODE GOES HERE
     }
 
-    // TODO Exercise 5.2
+    // Exercise 5.2
     // What a callback hell. We should improve this code. Use the "q" library which is already included
     // and loaded to create your first promise!
 
@@ -43,7 +43,7 @@
 
     }
 
-    // TODO Exercise 5.3 (optional)
+    // Exercise 5.3 (optional)
     // Congrats, your promise seems promising. Now it is time to use it.
 
     // TODO 5.3.1 Use the serverAddPromise function to calculate 5 + 4 + 3 + 2 + 1.
@@ -53,12 +53,11 @@
         // YOUR CODE GOES HERE
     }
 
+    // Exercise 5.4 (optional)
 
-    // TODO Exercise 5.4 (optional)
-
-    // code exercise 5.2 once again, this time using the basic XMLHttpRequest() object of javascript instead of
-    // the jquery abstraction. See https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest for more information
-
+    // TODO Exercise 5.4.1 Code exercise 5.2 once again, this time using the basic XMLHttpRequest() object of
+    //                     javascript instead of the jquery abstraction.
+    //                     See https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest for more information
 
     window.ex5 = window.ex5 || {};
     window.ex5.exercise51 = window.ex5.exercise51 || exercise51;
