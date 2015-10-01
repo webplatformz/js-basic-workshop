@@ -1,6 +1,6 @@
 /**
  * JavaScript Basics Workshop - Exercise 1
- * Objects, Arrays, Regexp & Exceptions
+ * Objects, Arrays & Dates
  */
 
 (function (global) {
