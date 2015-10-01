@@ -1,7 +1,8 @@
 (function (jasmine) {
     "use strict";
 
-    describe("CALLBACKS / PROMISES", function () {
+    describe("Exercise 4: Callbacks, Ajax & Promises", function () {
+
         function stubCalculationRequest(a, b) {
             var url = '/rest/calculate/' + a + '/plus/' + b;
             var result = (a + b);
@@ -39,7 +40,8 @@
             return calledUrls;
         }
 
-        describe("CALLBACKS / AJAX: Exercise 5.1", function () {
+        describe("Exercise 4.1: Callbacks / Ajax", function () {
+
             it("should make the correct rest calls", function (done) {
                 window.ex5.exercise51(function () {
                     var calledUrls = getCalledUrls();
@@ -61,9 +63,11 @@
                     done();
                 });
             });
+
         });
 
-        describe("PROMISES: Exercise 5.2", function () {
+        describe("Exercise 4.2: Promises", function () {
+
             beforeEach(function () {
                 jasmine.Ajax.stubRequest(
                     '/rest/calculate/undefined/plus/undefined'
@@ -115,20 +119,7 @@
             });
 
         });
+
     });
 
-    xdescribe("PROMISES / EXCEPTIONS", function () {
-        it("it is all bout the exception", function (done) {
-            console.log("starting execution");
-            Q.fcall(function () {
-                return 10;
-            }).then(function (value) {
-                console.log("then");
-                throw new Error("bla");
-            }).fail(function () {
-                console.log("fail");
-                done();
-            });
-        })
-    });
 })(window.jasmine);
