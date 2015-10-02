@@ -3,64 +3,45 @@
  * Callbacks, Ajax & Promises
  */
 
-// Welcome Coder! You are doing very well so far!
-// There is a very very advanced rest service you should use for the next exercises:
-// The service is available via GET under /rest/calculate/A/plus/B where A and B are integers.
-// e.g. GET /rest/calculate/5/plus/5 => 10
-
-(function (window, $, Q) {
+(function (window, $) {
     "use strict";
 
     // Exercise 4.1
-    // You got the task to calculate the amount of connections between all teammembers of the yankee team. For
-    // these six people, the number is calculated like this: 5 + 4 + 3 + 2 + 1. <justkidding>As this calculation
-    // needs lot of resources on the client side</justkidding>, the calculation has to be done on the server with
-    // the high performance webservice mentioned above.
+    // You got the task to get all devices with an ajax call to a rest service, get another call to get the
+    // device info.
     function exercise41(callback) {
-        // TODO 4.1.1 - Use the api to calculate the result
-        //              NOTE Use jQuery to call the service and get the result of 5+4, then take the result
-        //                   (in the first case 9) and add 3, and so on ...
-        //              NOTE Do not use jQuery promises, work with callbacks instead.
-        //              NOTE The callback should be called with the correct answer as the first parameter
+        // TODO 4.1.1 - Wipe all the devices
+        //              NOTE Use jQuery to call the service
+        //              NOTE Do not use jQuery promises, work with callbacks instead. Use the shorthandler $.get
+        //              NOTE You will get a list of devices via GET /rest/devices,
+        //              NOTE The list only contains one device (bad api design ;( ). You can get more information about
+        //                   devices under GET /rest/device/[device.id]. Pass the result of this call to the callback.
 
         // YOUR CODE GOES HERE
     }
 
     // Exercise 4.2
-    // What a callback hell. We should improve this code. Use the "q" library which is already included
-    // and loaded to create your first promise!
+    // It already gets a bit messy.. Time to try promises.
+    function exercise42(callback) {
+        // TODO 4.2.1 - Use jQuery Promises to solve the problem from Exercise 4.1
+        //              NOTE check out https://api.jquery.com/jquery.get/ and
+        //                   https://api.jquery.com/category/deferred-object/
+        //              NOTE you can handle multiple promises with https://api.jquery.com/jQuery.when/
 
-    // TODO 4.2.1: Create a function called serverAddPromise
-    // TODO 4.2.2: The function serverAddPromise should return a promise using the Q library, so it returns the correct interface for a promise.
-    //             see Q.defer() and check out https://github.com/kriskowal/q
-    // TODO 4.2.3: Enhance the newly created function with two summands as parameters a and b. Sum a + b on the GET
-    //             route "/rest/calculate/[A]/plus/[B]". This time, use the jQuery promise syntax and let your own
-    //             promise resolve
-    // TODO 4.2.4: Let the promise fail, if there is no correct answer from the server
-
-    // YOUR CODE GOES HERE:
-    function serverAddPromise() {
-
-    }
-
-    // Exercise 4.3 (optional)
-    // Congrats, your promise seems promising. Now it is time to use it.
-
-    // TODO 4.3.1 Use the serverAddPromise function to calculate 5 + 4 + 3 + 2 + 1.
-    //            Do not use Q.all, instead calculate the value in such steps: 5+4, (5+4)+3, ...
-
-    function exercise43() {
         // YOUR CODE GOES HERE
     }
 
-    // Exercise 4.4 (optional)
 
-    // TODO Exercise 4.4.1 Code exercise 4.2 once again, this time using the basic XMLHttpRequest() object of
+    // Exercise 4.3 (optional)
+    // TODO Exercise 4.3.1 Code exercise 4.1 once again, this time using the basic XMLHttpRequest() object of
     //                     javascript instead of the jquery abstraction.
     //                     See https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest for more information
+    function exercise43(callback) {
+        // YOUR CODE GOES HERE
+    }
 
     window.ex4 = window.ex4 || {};
     window.ex4.exercise41 = window.ex4.exercise41 || exercise41;
-    window.ex4.exercise42 = window.ex4.exercise42 || serverAddPromise;
+    window.ex4.exercise42 = window.ex4.exercise42 || exercise42;
     window.ex4.exercise43 = window.ex4.exercise43 || exercise43;
-})(window, jQuery, Q);
+})(window, jQuery);
