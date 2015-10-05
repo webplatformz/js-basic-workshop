@@ -45,7 +45,34 @@
     //                     javascript instead of the jquery abstraction.
     //                     See https://developer.mozilla.org/de/docs/Web/API/XMLHttpRequest for more information
     function exercise43() {
+        function getDeviceInfo(device) {
+            var url = "/rest/device/" + device.id;
+            var deviceInfo = new XMLHttpRequest();
 
+            deviceInfo.open("GET", url, true);
+            deviceInfo.onreadystatechange = function() {
+                var device;
+
+                if (deviceInfo.readyState == 4 && deviceInfo.status == 200) {
+                    device = JSON.parse(deviceInfo.responseText);
+                    callback(device);
+                }
+            };
+            deviceInfo.send();
+        }
+
+        var listDevices = new XMLHttpRequest();
+        listDevices.open("GET", "/rest/devices", true);
+        listDevices.onreadystatechange = function() {
+            var devices;
+            if (listDevices.readyState == 4 && listDevices.status == 200) {
+                var devices = JSON.parse(listDevices.responseText);
+                for (var i = 0; i < devices.length; i++) {
+                    getDeviceInfo(devices[i]);
+                }
+            }
+        };
+        listDevices.send();
     }
 
     window.ex4 = window.ex4 || {};

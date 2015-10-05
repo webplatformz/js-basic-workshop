@@ -91,6 +91,41 @@
                 });
             });
         });
+
+        describe("Exercise 4.3: XMLHttpRequest", function () {
+            beforeEach(function () {
+                jasmine.Ajax.stubRequest("/rest/devices").andReturn({
+                    status: 200,
+                    statusText: 'HTTP/1.1 200 OK',
+                    contentType: 'application/json',
+                    responseText: '[{"id": 12}]'
+                });
+                jasmine.Ajax.stubRequest("/rest/device/12").andReturn({
+                    status: 200,
+                    statusText: 'HTTP/1.1 200 OK',
+                    contentType: 'application/json',
+                    responseText: '{"status": true}'
+                });
+            });
+
+            it("should make the correct rest calls", function (done) {
+                global.ex4.exercise43(function (result) {
+                    var calledUrls = getCalledUrls();
+
+                    expect(calledUrls).toContain("/rest/devices");
+                    expect(calledUrls).toContain("/rest/device/12");
+
+                    done();
+                });
+            });
+
+            it("should return the correct result", function (done) {
+                global.ex4.exercise43(function (result) {
+                    expect(result.status).toBe(true);
+                    done();
+                });
+            });
+        });
     });
 
 })(window, window.jasmine);
