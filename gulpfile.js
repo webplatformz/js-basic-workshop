@@ -32,4 +32,4 @@ gulp.task('test', function (done) {
     }, done).start();
 });
 
-gulp.task('default', ['connect', 'watch', 'open']);
+gulp.task('default', ['connect', 'watch']);
