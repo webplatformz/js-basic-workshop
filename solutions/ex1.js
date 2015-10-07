@@ -33,7 +33,7 @@
     }
 
     // TODO Exercise 1.4 - Return true if:
-    //                     - the given value is NaN but not undefined
+    //                     - the given value is NaN
     //                     - OR the given value is a Boolean
     //                     - OR the given value equals 42
     function exercise14(value) {

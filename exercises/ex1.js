@@ -7,7 +7,7 @@
 
     "use strict";
 
-    // TODO Exercise 1.1 - Return an object containing the following properties:
+    // TODO Exercise 1.1 - RETURN an object containing the following properties:
     //                     - a valid, finite number
     //                     - a non-empty string
     //                     - a non-empty array
@@ -22,13 +22,13 @@
         // YOUR CODE GOES HERE
     }
 
-    // TODO Exercise 1.3 - Return a Date object which represents the 29th February 2000
+    // TODO Exercise 1.3 - RETURN a Date object which represents the 29th February 2000
     function exercise13() {
         // YOUR CODE GOES HERE
     }
 
-    // TODO Exercise 1.4 - Return true if:
-    //                     - the given value is NaN but not undefined
+    // TODO Exercise 1.4 - RETURN true if:
+    //                     - the given value is NaN
     //                     - OR the given value is a Boolean
     //                     - OR the given value equals 42
     function exercise14(value) {
